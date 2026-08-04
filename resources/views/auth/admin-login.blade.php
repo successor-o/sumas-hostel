@@ -59,12 +59,6 @@
                   <button type="submit" class="btn btn-sumas-primary w-100 py-2 mb-3">Log In to Console <i class="fa-solid fa-arrow-right ms-2"></i></button>
                 </form>
                 <hr class="my-4">
-                <p class="text-center small text-muted mb-2">Not a hostel administrator?</p>
-                <a href="{{ route('login') }}" class="btn btn-sumas-outline w-100 btn-sm"><i class="fa-solid fa-user-graduate me-2"></i>Go to Student Login</a>
-                <div class="alert alert-light border mt-4 small mb-0">
-                  <strong>Demo credentials:</strong><br>
-                  admin@sumas.edu.ng / password
-                </div>
               </div>
             </div>
           </div>

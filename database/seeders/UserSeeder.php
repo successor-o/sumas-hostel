@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
         foreach ($students as $student) {
             User::updateOrCreate(
                 ['matric_number' => $student['matric_number']],
-                array_merge($student, ['password' => Hash::make('password')])
+                array_merge($student, ['password' => Hash::make('password'), 'status' => 'approved'])
             );
         }
     }

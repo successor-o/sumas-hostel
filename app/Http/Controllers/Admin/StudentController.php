@@ -34,6 +34,10 @@ class StudentController extends Controller
             $query->where('gender', $gender);
         }
 
+        if ($status = $request->get('status')) {
+            $query->where('status', $status);
+        }
+
         if ($housing = $request->get('housing')) {
             if ($housing === 'housed') {
                 $query->whereHas('activeAllocation');
@@ -80,6 +84,7 @@ class StudentController extends Controller
             'level' => ['required', 'string', 'max:50'],
             'phone' => ['nullable', 'string', 'max:20'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,'.$student->id],
+            'status' => ['required', 'in:pending,approved,rejected'],
         ]);
 
         $student->update($data);

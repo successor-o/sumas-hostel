@@ -15,14 +15,14 @@
 </div>
 
 <div class="row g-3 mb-4">
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon brown"><i class="fa-solid fa-user-graduate"></i></div></div><h3 data-counter="{{ $totalStudents }}">0</h3><div class="label">Total Students</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon gold"><i class="fa-solid fa-building"></i></div></div><h3 data-counter="{{ $totalHostels }}">0</h3><div class="label">Total Hostels</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon blue"><i class="fa-solid fa-door-closed"></i></div></div><h3 data-counter="{{ $totalRooms }}">0</h3><div class="label">Total Rooms</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon red"><i class="fa-solid fa-door-closed"></i></div></div><h3 data-counter="{{ $occupiedRooms }}">0</h3><div class="label">Occupied Rooms</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon green"><i class="fa-solid fa-door-open"></i></div></div><h3 data-counter="{{ $availableRooms }}">0</h3><div class="label">Available Rooms</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon orange"><i class="fa-solid fa-hourglass-half"></i></div></div><h3 data-counter="{{ $pendingApplications }}">0</h3><div class="label">Pending Applications</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon green"><i class="fa-solid fa-circle-check"></i></div></div><h3 data-counter="{{ $approvedApplications }}">0</h3><div class="label">Approved Applications</div></div></div>
-  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon red"><i class="fa-solid fa-circle-xmark"></i></div></div><h3 data-counter="{{ $rejectedApplications }}">0</h3><div class="label">Rejected Applications</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon brown"><i class="fa-solid fa-user-graduate"></i></div></div><h3 data-counter="{{ $totalStudents }}">{{ $totalStudents }}</h3><div class="label">Total Students</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon gold"><i class="fa-solid fa-building"></i></div></div><h3 data-counter="{{ $totalHostels }}">{{ $totalHostels }}</h3><div class="label">Total Hostels</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon blue"><i class="fa-solid fa-door-closed"></i></div></div><h3 data-counter="{{ $totalRooms }}">{{ $totalRooms }}</h3><div class="label">Total Rooms</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon red"><i class="fa-solid fa-door-closed"></i></div></div><h3 data-counter="{{ $occupiedRooms }}">{{ $occupiedRooms }}</h3><div class="label">Occupied Rooms</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon green"><i class="fa-solid fa-door-open"></i></div></div><h3 data-counter="{{ $availableRooms }}">{{ $availableRooms }}</h3><div class="label">Available Rooms</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon orange"><i class="fa-solid fa-hourglass-half"></i></div></div><h3 data-counter="{{ $pendingApplications }}">{{ $pendingApplications }}</h3><div class="label">Pending Applications</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon green"><i class="fa-solid fa-circle-check"></i></div></div><h3 data-counter="{{ $approvedApplications }}">{{ $approvedApplications }}</h3><div class="label">Approved Applications</div></div></div>
+  <div class="col-6 col-md-4 col-xl-3"><div class="stat-card"><div class="top"><div class="icon red"><i class="fa-solid fa-circle-xmark"></i></div></div><h3 data-counter="{{ $rejectedApplications }}">{{ $rejectedApplications }}</h3><div class="label">Rejected Applications</div></div></div>
 </div>
 
 <div class="row g-3 mb-4">

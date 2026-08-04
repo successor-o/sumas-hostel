@@ -61,9 +61,9 @@
                   <button type="submit" class="btn btn-sumas-primary w-100 py-2 mb-3">Log In <i class="fa-solid fa-arrow-right ms-2"></i></button>
                   <p class="text-center small text-muted mb-0">Don't have an account? <a href="{{ route('register') }}" class="text-brown fw-600">Register here</a></p>
                 </form>
-                <hr class="my-4">
-                <p class="text-center small text-muted mb-2">Are you a hostel administrator?</p>
-                <a href="{{ route('admin.login') }}" class="btn btn-sumas-outline w-100 btn-sm"><i class="fa-solid fa-user-shield me-2"></i>Go to Admin Login</a>
+{{--                <hr class="my-4">--}}
+{{--                <p class="text-center small text-muted mb-2">Are you a hostel administrator?</p>--}}
+{{--                <a href="{{ route('admin.login') }}" class="btn btn-sumas-outline w-100 btn-sm"><i class="fa-solid fa-user-shield me-2"></i>Go to Admin Login</a>--}}
               </div>
             </div>
           </div>

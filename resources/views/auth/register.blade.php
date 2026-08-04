@@ -25,6 +25,28 @@
               <div class="p-4 p-md-5">
                 <h4 class="mb-1">Register as a new student</h4>
                 <p class="text-muted small mb-4">All fields marked * are required.</p>
+
+                @if(session('status'))
+                  <div class="alert alert-info">
+                    {{ session('status') }}
+                  </div>
+                @endif
+
+                @if(isset($statusMessage) && $statusMessage)
+                  <div class="alert {{ isset($user) && $user->status === 'approved' ? 'alert-success' : (isset($user) && $user->status === 'rejected' ? 'alert-danger' : 'alert-warning') }}">
+                    <strong>Status Check Result:</strong> {{ $statusMessage }}
+                  </div>
+                @endif
+
+                <div class="alert alert-light border mb-4">
+                  <strong class="d-block mb-2">Check Registration Status</strong>
+                  <p class="small text-muted mb-2">Already registered? Enter your matric number to check your account approval status.</p>
+                  <form method="GET" action="{{ route('check.status') }}" class="d-flex gap-2">
+                    <input type="text" name="login" class="form-control form-control-sm" placeholder="Matric number or email" value="{{ $statusCheck ?? '' }}">
+                    <button type="submit" class="btn btn-sumas-outline btn-sm">Check Status</button>
+                  </form>
+                </div>
+
                 <form method="POST" action="{{ route('register.store') }}" class="needs-validation" novalidate>
                   @csrf
                   <div class="row g-3">

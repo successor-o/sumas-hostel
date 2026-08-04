@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Hostel;
+use App\Models\SystemNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +50,7 @@ class ApplicationController extends Controller
             'agree_rules.accepted' => 'You must agree to the hostel rules before submitting.',
         ]);
 
-        $student->applications()->updateOrCreate(
+        $application = $student->applications()->updateOrCreate(
             ['session' => $session],
             [
                 'hostel_id' => $data['hostel_id'],
@@ -60,6 +62,15 @@ class ApplicationController extends Controller
                 'reviewed_at' => null,
             ]
         );
+
+        Admin::each(function ($admin) use ($student, $application) {
+            SystemNotification::create([
+                'admin_id' => $admin->id,
+                'title' => 'New Application Received',
+                'message' => "{$student->name} ({$student->matric_number}) has submitted a hostel application for {$application->hostel->name}.",
+                'type' => 'info',
+            ]);
+        });
 
         return redirect()->route('student.application')->with('status', 'Application submitted! You can track its status from your dashboard.');
     }

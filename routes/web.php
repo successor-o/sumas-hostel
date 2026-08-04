@@ -51,6 +51,7 @@ Route::middleware('guest:web')->group(function () {
     Route::post('/login', [StudentAuthController::class, 'login'])->name('login.attempt');
     Route::get('/register', [StudentAuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [StudentAuthController::class, 'register'])->name('register.store');
+    Route::get('/check-status', [StudentAuthController::class, 'checkStatus'])->name('check.status');
 
     Route::get('/forgot-password', [PasswordResetController::class, 'showForgot'])->name('password.request');
     Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');

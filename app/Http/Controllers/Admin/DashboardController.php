@@ -47,7 +47,7 @@ class DashboardController extends Controller
                         'icon' => $a->status === 'approved' ? 'fa-circle-check' : 'fa-circle-xmark',
                         'text' => ($a->user->name ?? 'A student')." application was {$a->status}.",
                         'time' => $a->reviewed_at,
-                    ])
+                    ])->all()
             )
             ->concat(
                 Allocation::with('user')->latest('allocated_at')->take(3)->get()
@@ -56,7 +56,7 @@ class DashboardController extends Controller
                         'icon' => 'fa-key',
                         'text' => 'Room allocated to '.($al->user->name ?? 'a student').'.',
                         'time' => $al->allocated_at,
-                    ])
+                    ])->all()
             )
             ->sortByDesc('time')
             ->take(5);

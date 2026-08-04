@@ -42,6 +42,14 @@
         </select>
       </div>
       <div class="col-6 col-lg-2">
+        <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+          <option value="">Account Status</option>
+          <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Pending</option>
+          <option value="approved" {{ request('status') === 'approved' ? 'selected' : '' }}>Approved</option>
+          <option value="rejected" {{ request('status') === 'rejected' ? 'selected' : '' }}>Rejected</option>
+        </select>
+      </div>
+      <div class="col-6 col-lg-2">
         <select name="housing" class="form-select form-select-sm" onchange="this.form.submit()">
           <option value="">Housing Status</option>
           <option value="housed" {{ request('housing') === 'housed' ? 'selected' : '' }}>Housed</option>
@@ -53,12 +61,13 @@
 
   <div class="table-responsive">
     <table class="table table-sumas align-middle mb-0">
-      <thead><tr><th>Student</th><th>Matric No.</th><th>Faculty</th><th>Level</th><th>Gender</th><th>Hostel</th><th>Status</th><th></th></tr></thead>
+      <thead><tr><th>Student</th><th>Matric No.</th><th>Faculty</th><th>Level</th><th>Gender</th><th>Account Status</th><th>Hostel</th><th>Status</th><th></th></tr></thead>
       <tbody>
         @forelse($students as $student)
         <tr>
           <td class="d-flex align-items-center gap-2"><div class="table-avatar">{{ $student->initials() }}</div><span class="fw-600 small">{{ $student->name }}</span></td>
           <td>{{ $student->matric_number }}</td><td>{{ $student->faculty }}</td><td>{{ $student->level }}</td><td>{{ $student->gender }}</td>
+          <td><span class="badge-status {{ $student->status }}">{{ ucfirst($student->status) }}</span></td>
           <td>{{ $student->activeAllocation ? $student->activeAllocation->hostel->name : '—' }}</td>
           <td><span class="badge-status {{ $student->activeAllocation ? 'active' : 'pending' }}">{{ $student->activeAllocation ? 'Housed' : 'Not Housed' }}</span></td>
           <td class="table-actions">
@@ -68,7 +77,7 @@
           </td>
         </tr>
         @empty
-        <tr><td colspan="8" class="text-center text-muted py-4">No students match your filters.</td></tr>
+        <tr><td colspan="9" class="text-center text-muted py-4">No students match your filters.</td></tr>
         @endforelse
       </tbody>
     </table>
@@ -123,6 +132,13 @@
             </div>
             <div class="col-md-6"><label class="form-label small fw-600">Phone</label><input type="tel" name="phone" class="form-control" value="{{ $student->phone }}"></div>
             <div class="col-md-6"><label class="form-label small fw-600">Email</label><input type="email" name="email" class="form-control" value="{{ $student->email }}"></div>
+            <div class="col-12"><label class="form-label small fw-600">Account Status</label>
+              <select name="status" class="form-select">
+                <option value="pending" {{ $student->status === 'pending' ? 'selected' : '' }}>Pending</option>
+                <option value="approved" {{ $student->status === 'approved' ? 'selected' : '' }}>Approved</option>
+                <option value="rejected" {{ $student->status === 'rejected' ? 'selected' : '' }}>Rejected</option>
+              </select>
+            </div>
           </div>
         </div>
         <div class="modal-footer"><button type="button" class="btn btn-sumas-outline" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-sumas-primary">Save Changes</button></div>
