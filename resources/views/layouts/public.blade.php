@@ -31,6 +31,17 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<!-- Tikswift live chat -->
+<script src="http://localhost:3005/widget.js"></script>
+<script>
+  SupportWidget.init({
+    workspaceId: "363fecf9-9b45-4c1c-bab5-9be7f95fc0cc",
+    position: "bottom-left"
+  });
+</script>
+
+
+
 @stack('scripts')
 </body>
 </html>
