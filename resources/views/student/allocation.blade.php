@@ -72,6 +72,41 @@
     </div>
   </div>
 </div>
+@elseif($application && $application->status === 'approved')
+<div class="panel">
+  <div class="panel-head"><h5>Application Approved</h5><span class="badge-status approved">Approved</span></div>
+  <div class="row g-3 align-items-center">
+    <div class="col-md-5">
+      <img src="{{ $application->hostel->imageUrl() }}" class="img-fluid rounded-4" style="height:200px;object-fit:cover;width:100%;" alt="{{ $application->hostel->name }}">
+    </div>
+    <div class="col-md-7">
+      <div class="d-flex justify-content-between border-bottom py-2 small"><span class="text-muted">Hostel Applied For</span><strong>{{ $application->hostel->name }}</strong></div>
+      <div class="d-flex justify-content-between border-bottom py-2 small"><span class="text-muted">Application Status</span><strong class="text-success">Approved</strong></div>
+      <div class="d-flex justify-content-between border-bottom py-2 small"><span class="text-muted">Reviewed On</span><strong>{{ $application->reviewed_at?->format('F j, Y') }}</strong></div>
+      <div class="d-flex justify-content-between py-2 small"><span class="text-muted">Academic Session</span><strong>{{ $application->session }}</strong></div>
+    </div>
+  </div>
+  <div class="alert alert-info mt-3 mb-0 small" role="alert">
+    <i class="fa-solid fa-circle-info me-2"></i>Your application has been approved! A room will be assigned to you shortly by the Hostel Office. Check back soon.
+  </div>
+</div>
+@elseif($application && $application->status === 'rejected')
+<div class="panel text-center py-5">
+  <i class="fa-solid fa-circle-xmark fs-1 text-danger mb-3 d-block"></i>
+  <h5>Application Rejected</h5>
+  <p class="text-muted small mb-1">Your hostel application for <strong>{{ $application->hostel->name }}</strong> was not approved.</p>
+  @if($application->rejection_reason)
+    <p class="text-muted small mb-3"><strong>Reason:</strong> {{ $application->rejection_reason }}</p>
+  @endif
+  <a href="{{ route('student.application') }}" class="btn btn-sumas-primary btn-sm">Submit a New Application</a>
+</div>
+@elseif($application && $application->status === 'pending')
+<div class="panel text-center py-5">
+  <i class="fa-solid fa-hourglass-half fs-1 text-warning mb-3 d-block"></i>
+  <h5>Application Pending Review</h5>
+  <p class="text-muted small mb-3">Your application for <strong>{{ $application->hostel->name }}</strong> is awaiting review by the Hostel Office.</p>
+  <div class="text-muted small">Submitted on {{ $application->created_at->format('F j, Y') }}</div>
+</div>
 @else
 <div class="panel text-center py-5">
   <i class="fa-solid fa-house-circle-xmark fs-1 text-muted mb-3 d-block"></i>

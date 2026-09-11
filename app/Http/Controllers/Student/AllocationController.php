@@ -11,6 +11,7 @@ class AllocationController extends Controller
     public function show(): View
     {
         $student = Auth::guard('web')->user();
+        $session = config('sumas.session');
 
         $allocation = $student->allocations()
             ->where('status', 'active')
@@ -28,10 +29,18 @@ class AllocationController extends Controller
                 ->pluck('user');
         }
 
+        // Fetch the student's current session application (approved/pending/rejected)
+        $application = $student->applications()
+            ->where('session', $session)
+            ->with('hostel')
+            ->latest()
+            ->first();
+
         return view('student.allocation', [
             'student' => $student,
             'allocation' => $allocation,
             'roommates' => $roommates,
+            'application' => $application,
         ]);
     }
 }
